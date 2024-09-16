@@ -1,0 +1,48 @@
+<title>Login</title>
+
+{% extends 'homepage/index.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static '/css/login.css' %}">
+
+
+<div class="container login-container">
+    <div class="d-flex justify-content-center form_container">
+        <div class="col-md-6 login-form-1">
+            <h3>Login</h3>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input type="text" name="username" placeholder="Username *" class="form-control">
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    <input type="password" name="password" placeholder="Password *" class="form-control">
+                </div>
+                <br>
+                <div class="d-flex justify-content-center form_container">
+                    <input type="submit" class="btnSubmit" value="Login" />
+                </div>
+
+                {% for message in messages %}
+                <p id="messages">{{ message }}</p>
+                {% endfor %}
+
+                <br>
+                <div class="d-flex justify-content-center form_container">
+                    Don't have an account? <a href="register" class="ml-2">Sign Up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
